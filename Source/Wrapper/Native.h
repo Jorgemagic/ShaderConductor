@@ -33,7 +33,8 @@ struct SourceDescription
 {
     const char* source;    
     const char* entryPoint;
-    ShaderStage stage;    
+    ShaderStage stage;  
+	Extras extras;
 };
 
 struct TargetDescription
