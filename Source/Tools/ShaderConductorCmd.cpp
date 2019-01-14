@@ -154,7 +154,7 @@ int main(int argc, char** argv)
         }
 
         inputFile.seekg(0, std::ios::end);
-        sourceDesc.source.resize(inputFile.tellg());
+        sourceDesc.source.resize(static_cast<size_t>(inputFile.tellg()));
         inputFile.seekg(0, std::ios::beg);
         inputFile.read(&sourceDesc.source[0], sourceDesc.source.size());
     }
