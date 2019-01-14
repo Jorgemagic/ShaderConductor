@@ -61,10 +61,25 @@ struct DisassembleDescription
 char* binaryArray;
 char* msgArray;
 
-#define DLLEXPORT extern "C" __declspec(dllexport)
+#if defined(__clang__)
+#define SC_SYMBOL_EXPORT __attribute__((__visibility__("default")))
+#define SC_SYMBOL_IMPORT
+#elif defined(__GNUC__)
+#if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+#define SC_SYMBOL_EXPORT __attribute__((__dllexport__))
+#define SC_SYMBOL_IMPORT __attribute__((__dllimport__))
+#else
+#define SC_SYMBOL_EXPORT __attribute__((__visibility__("default")))
+#define SC_SYMBOL_IMPORT
+#endif
+#elif defined(_MSC_VER)
+#define SC_SYMBOL_EXPORT __declspec(dllexport)
+#define SC_SYMBOL_IMPORT __declspec(dllimport)
+#endif
 
-DLLEXPORT void Compile(SourceDescription* source, TargetDescription* target, ResultDescription* result);
 
-DLLEXPORT void Disassemble(DisassembleDescription* source, ResultDescription* result);
+SC_SYMBOL_EXPORT void Compile(SourceDescription* source, TargetDescription* target, ResultDescription* result);
 
-DLLEXPORT void FreeResources();
+SC_SYMBOL_EXPORT void Disassemble(DisassembleDescription* source, ResultDescription* result);
+
+SC_SYMBOL_EXPORT void FreeResources();
