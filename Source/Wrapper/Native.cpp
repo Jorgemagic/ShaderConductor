@@ -35,7 +35,11 @@ char* CopyString(const char* source)
     size_t sourceLength = strlen(source);
     
     msgArray = new char[sourceLength + 1];
-    std::strncpy(msgArray, source, sourceLength);
+#if _MSC_VER
+    strncpy_s(msgArray, sourceLength + 1, source, sourceLength);
+#else
+    std::strncpy_s(msgArray, source, sourceLength);
+#endif
 
     return msgArray;
 }
