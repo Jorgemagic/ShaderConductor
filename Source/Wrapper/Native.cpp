@@ -26,6 +26,7 @@
 #include "Native.h"
 #include <ShaderConductor/ShaderConductor.hpp>
 #include <iostream>
+#include <cstring>
 
 using namespace ShaderConductor;
 
@@ -34,7 +35,7 @@ char* CopyString(const char* source)
     size_t sourceLength = strlen(source);
     
     msgArray = new char[sourceLength + 1];
-    strncpy_s(msgArray, sourceLength + 1, source, sourceLength);
+    std::strncpy(msgArray, source, sourceLength);
 
     return msgArray;
 }
