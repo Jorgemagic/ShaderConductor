@@ -79,8 +79,8 @@ char* msgArray;
 #endif
 
 
-SC_SYMBOL_EXPORT void Compile(SourceDescription* source, TargetDescription* target, ResultDescription* result);
+extern "C" SC_SYMBOL_EXPORT void Compile(SourceDescription* source, TargetDescription* target, ResultDescription* result);
 
-SC_SYMBOL_EXPORT void Disassemble(DisassembleDescription* source, ResultDescription* result);
+extern "C" SC_SYMBOL_EXPORT void Disassemble(DisassembleDescription* source, ResultDescription* result);
 
-SC_SYMBOL_EXPORT void FreeResources();
+extern "C" SC_SYMBOL_EXPORT void FreeResources();
