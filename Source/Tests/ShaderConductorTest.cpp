@@ -49,7 +49,7 @@ namespace
         if (file)
         {
             file.seekg(0, std::ios::end);
-            ret.resize(file.tellg());
+            ret.resize(static_cast<size_t>(file.tellg()));
             file.seekg(0, std::ios::beg);
             file.read(reinterpret_cast<char*>(ret.data()), ret.size());
         }
