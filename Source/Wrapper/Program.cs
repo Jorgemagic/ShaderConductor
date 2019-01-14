@@ -64,7 +64,15 @@ namespace CSharpConsole
                 result = disassembleResult;
             }
 
-            if (result.isText)
+            if (result.hasError)
+            {
+                string warning = Marshal.PtrToStringAnsi(result.errorWarningMsg);
+                Console.WriteLine("*************************\n" +
+                                  "**  Error output       **\n" +
+                                  "*************************\n");
+                Console.WriteLine(warning);
+            }
+            else if (result.isText)
             {
                 string translation = Marshal.PtrToStringAnsi(result.target, result.targetSize);
 
@@ -74,14 +82,6 @@ namespace CSharpConsole
                 Console.WriteLine(translation);
             }
 
-            if (result.hasError)
-            {
-                string warning = Marshal.PtrToStringAnsi(result.errorWarningMsg);
-                Console.WriteLine("*************************\n" +
-                                  "**  Error output       **\n" +
-                                  "*************************\n");
-                Console.WriteLine(warning);
-            }
 
             Wrapper.FreeResources();
 

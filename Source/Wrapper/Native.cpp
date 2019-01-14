@@ -45,6 +45,7 @@ void Compile(SourceDescription* source, TargetDescription* target, ResultDescrip
     sourceDesc.entryPoint = source->entryPoint;
     sourceDesc.source = source->source;
     sourceDesc.stage = source->stage;
+    sourceDesc.extras = source->extras;
 
     Compiler::TargetDesc targetDesc;
     targetDesc.language = target->shadingLanguage;

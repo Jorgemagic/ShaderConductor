@@ -352,6 +352,44 @@ namespace
         };
         // clang-format on
 
+        // extras values
+        if (source.extras.columnMajorByDefault)
+        {
+            dxcArgStrings.push_back(L"-Zpc");
+        }
+        else if (source.extras.rowMajorByDefault)
+        {
+            dxcArgStrings.push_back(L"-Zpr");
+        }
+
+        if (source.extras.shiftAllTexturesBindings > 0)
+        {
+            dxcArgStrings.push_back(L"-fvk-t-shift");
+            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllTexturesBindings));
+			dxcArgStrings.push_back(L"all");
+        }
+
+        if (source.extras.shiftAllSamplersBindings > 0)
+        {
+            dxcArgStrings.push_back(L"-fvk-s-shift");
+            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllSamplersBindings));
+			dxcArgStrings.push_back(L"all");
+        }
+
+        if (source.extras.shiftAllCBuffersBindings > 0)
+        {
+            dxcArgStrings.push_back(L"-fvk-b-shift");
+            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllCBuffersBindings));
+			dxcArgStrings.push_back(L"all");
+        }
+
+        if (source.extras.shiftAllUABuffersBindings > 0)
+        {
+            dxcArgStrings.push_back(L"-fvk-u-shift");
+            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllUABuffersBindings));
+			dxcArgStrings.push_back(L"all");
+        }
+
         switch (targetLanguage)
         {
         case ShadingLanguage::Dxil:
