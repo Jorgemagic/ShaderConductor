@@ -34,7 +34,12 @@ struct SourceDescription
     const char* source;    
     const char* entryPoint;
     ShaderStage stage;  
-	Extras extras;
+	bool rowMajorByDefault;
+    int shiftAllTexturesBindings;
+    bool columnMajorByDefault;
+    int shiftAllSamplersBindings;
+    int shiftAllCBuffersBindings;
+    int shiftAllUABuffersBindings;
 };
 
 struct TargetDescription

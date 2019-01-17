@@ -87,16 +87,6 @@ namespace ShaderConductor
         std::string value;
     };
 
-	struct Extras
-	{
-        bool columnMajorByDefault;
-        bool rowMajorByDefault;
-        int shiftAllTexturesBindings;
-        int shiftAllSamplersBindings;
-        int shiftAllCBuffersBindings;
-        int shiftAllUABuffersBindings;
-	};
-
     class SC_API Compiler
     {
     public:
@@ -108,7 +98,12 @@ namespace ShaderConductor
             ShaderStage stage;
             std::vector<MacroDefine> defines;
             std::function<std::string(const std::string& includeName)> loadIncludeCallback;
-            Extras extras;
+            bool rowMajorByDefault;
+            int shiftAllTexturesBindings;
+            bool columnMajorByDefault;
+            int shiftAllSamplersBindings;
+            int shiftAllCBuffersBindings;
+            int shiftAllUABuffersBindings;
         };
 
         struct TargetDesc
