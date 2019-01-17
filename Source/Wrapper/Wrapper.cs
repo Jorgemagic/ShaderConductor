@@ -76,23 +76,17 @@ namespace CSharpConsole
         };
 
         [StructLayout(LayoutKind.Sequential)]
-        public struct Extras
-        {
-            public bool columnMajorByDefault;
-            public bool rowMajorByDefault;
-            public int shiftAllTexturesBindings;
-            public int shiftAllSamplersBindings;
-            public int shiftAllCBuffersBindings;
-            public int shiftAllUABuffersBindings;
-        };
-
-        [StructLayout(LayoutKind.Sequential)]
         public struct SourceDesc
         {
             public string source;            
             public string entryPoint;
             public ShaderStage stage;
-            public Extras extra;
+            public bool rowMajorByDefault;
+            public int shiftAllTexturesBindings;
+            public bool columnMajorByDefault;
+            public int shiftAllSamplersBindings;
+            public int shiftAllCBuffersBindings;
+            public int shiftAllUABuffersBindings;
         }
 
         [StructLayout(LayoutKind.Sequential)]

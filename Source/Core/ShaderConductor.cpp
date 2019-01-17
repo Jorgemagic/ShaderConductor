@@ -353,41 +353,41 @@ namespace
         // clang-format on
 
         // extras values
-        if (source.extras.columnMajorByDefault)
+        if (source.columnMajorByDefault)
         {
             dxcArgStrings.push_back(L"-Zpc");
         }
-        else if (source.extras.rowMajorByDefault)
+        else if (source.rowMajorByDefault)
         {
             dxcArgStrings.push_back(L"-Zpr");
-        }
+        }		
 
-        if (source.extras.shiftAllTexturesBindings > 0)
-        {
-            dxcArgStrings.push_back(L"-fvk-t-shift");
-            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllTexturesBindings));
-			dxcArgStrings.push_back(L"all");
-        }
-
-        if (source.extras.shiftAllSamplersBindings > 0)
-        {
-            dxcArgStrings.push_back(L"-fvk-s-shift");
-            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllSamplersBindings));
-			dxcArgStrings.push_back(L"all");
-        }
-
-        if (source.extras.shiftAllCBuffersBindings > 0)
-        {
+        if (source.shiftAllCBuffersBindings > 0)
+        {           
             dxcArgStrings.push_back(L"-fvk-b-shift");
-            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllCBuffersBindings));
-			dxcArgStrings.push_back(L"all");
+            dxcArgStrings.push_back(std::to_wstring(source.shiftAllCBuffersBindings));
+            dxcArgStrings.push_back(L"all");
         }
 
-        if (source.extras.shiftAllUABuffersBindings > 0)
-        {
+        if (source.shiftAllUABuffersBindings > 0)
+        {            
             dxcArgStrings.push_back(L"-fvk-u-shift");
-            dxcArgStrings.push_back(std::to_wstring(source.extras.shiftAllUABuffersBindings));
-			dxcArgStrings.push_back(L"all");
+            dxcArgStrings.push_back(std::to_wstring(source.shiftAllUABuffersBindings));
+            dxcArgStrings.push_back(L"all");
+        }
+
+        if (source.shiftAllSamplersBindings > 0)
+        {            
+            dxcArgStrings.push_back(L"-fvk-s-shift");
+            dxcArgStrings.push_back(std::to_wstring(source.shiftAllSamplersBindings));
+            dxcArgStrings.push_back(L"all");
+        }
+
+        if (source.shiftAllTexturesBindings > 0)
+        {            
+            dxcArgStrings.push_back(L"-fvk-t-shift");
+            dxcArgStrings.push_back(std::to_wstring(source.shiftAllTexturesBindings));
+            dxcArgStrings.push_back(L"all");
         }
 
         switch (targetLanguage)
@@ -411,7 +411,7 @@ namespace
         dxcArgs.reserve(dxcArgStrings.size());
         for (const auto& arg : dxcArgStrings)
         {
-            dxcArgs.push_back(arg.c_str());
+            dxcArgs.push_back(arg.c_str());            
         }
 
         CComPtr<IDxcIncludeHandler> includeHandler = new ScIncludeHandler(std::move(source.loadIncludeCallback));

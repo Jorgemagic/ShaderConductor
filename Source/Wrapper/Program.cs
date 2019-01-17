@@ -37,15 +37,19 @@ namespace CSharpConsole
 
             Wrapper.SourceDesc sourceDesc = new Wrapper.SourceDesc()
             {
-                entryPoint = "PS",
+                entryPoint = "VS",
 
-                stage = Wrapper.ShaderStage.PixelShader,
+                stage = Wrapper.ShaderStage.VertexShader,
                 source = source,
+                rowMajorByDefault = true,
+                shiftAllUABuffersBindings = 20,
+                shiftAllSamplersBindings = 40,
+                shiftAllTexturesBindings = 60,
             };
 
             Wrapper.TargetDesc targetDesc = new Wrapper.TargetDesc()
             {
-                language = Wrapper.ShadingLanguage.Dxil,
+                language = Wrapper.ShadingLanguage.SpirV,
                 version = "460",
             };
 

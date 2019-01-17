@@ -45,8 +45,13 @@ void Compile(SourceDescription* source, TargetDescription* target, ResultDescrip
     sourceDesc.entryPoint = source->entryPoint;
     sourceDesc.source = source->source;
     sourceDesc.stage = source->stage;
-    sourceDesc.extras = source->extras;
-
+    sourceDesc.rowMajorByDefault = source->rowMajorByDefault;
+    sourceDesc.columnMajorByDefault = source->columnMajorByDefault;
+    sourceDesc.shiftAllTexturesBindings = source->shiftAllTexturesBindings;
+    sourceDesc.shiftAllSamplersBindings = source->shiftAllSamplersBindings;
+    sourceDesc.shiftAllCBuffersBindings = source->shiftAllCBuffersBindings;
+    sourceDesc.shiftAllUABuffersBindings = source->shiftAllUABuffersBindings;
+	
     Compiler::TargetDesc targetDesc;
     targetDesc.language = target->shadingLanguage;
     targetDesc.version = target->version;
