@@ -43,4 +43,3 @@ set_target_properties(${DLL_NAME} PROPERTIES FOLDER "Wrapper")
 
 	set_target_properties(${CSHARP_TEST} PROPERTIES FOLDER "Wrapper")
 
-set_target_properties(${CSHARP_TEST} PROPERTIES FOLDER "Wrapper")
